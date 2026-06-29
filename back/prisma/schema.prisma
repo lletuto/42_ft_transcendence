@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+/* Tell prisma to generate a client in js/ts to talk to the db */
+generator client {
+  provider = "prisma-client-js"
+}
+/*Se connect a la db -Elias*/
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+/*This describe a sql table
+
+  in sql it should be something like :
+  CREATE TABLE User (
+    id SERIAL PRIMARY KEY,
+    email TEXT UNIQUE,
+    password TEXT,
+    createdAt TIMESTAMP DEFAULT NOW()
+  );
+*/
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  nickname  String?  @unique
+  password  String
+  createdAt DateTime @default(now())
+  FAkey		String?
+  avatar    String   @default("default_avatar.png")
+  friendships Friendship[] @relation("FriendshipsAsUser")
+  friendOf    Friendship[] @relation("FriendshipsAsFriend")
+  refreshToken String?
+  lastSeen     DateTime?
+  lostMatch	Int @default(0)
+  winMatch Int @default(0)
+  messagesSent     Message[] @relation("MessagesSent")
+  messagesReceived Message[] @relation("MessagesReceived")
+}
+
+model Friendship {
+  userId    Int
+  friendId  Int
+  createdAt DateTime @default(now())
+  user      User     @relation("FriendshipsAsUser",   fields: [userId],   references: [id], onDelete: Cascade)
+  friend    User     @relation("FriendshipsAsFriend", fields: [friendId], references: [id], onDelete: Cascade)
+  @@id([userId, friendId])
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  content    String
+  createdAt  DateTime @default(now())
+  senderId   Int
+  receiverId Int
+  sender     User     @relation("MessagesSent",     fields: [senderId],   references: [id], onDelete: Cascade)
+  receiver   User     @relation("MessagesReceived", fields: [receiverId], references: [id], onDelete: Cascade)
+}

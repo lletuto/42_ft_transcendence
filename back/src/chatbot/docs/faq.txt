@@ -1,0 +1,37 @@
+FAQ - Rock, Paper, Scissors
+
+Q: How do I play against the bot?
+A: From the home page, click "Play" then "Against the bot". You start on level 0.
+
+Q: How do I play against someoene?
+A: From the home page, click "Play" then "Multiplayer".
+
+Q: What is the Well?
+A: It is a fourth move on top of Rock, Paper and Scissors. The Well beats Rock and Scissors but loses to Paper. It becomes available at level 2.
+
+Q: Why did my score drop by 2 points?
+A: From level 2 onward, losing a round while you played the Well costs 2 points instead of just losing the round. The score never goes below 0.
+
+Q: How many points do I need to win?
+A: On level 0 you need 5 points. On levels 1, 2 and 3 you need 10 points.
+
+Q: How do combos work?
+A: Playing three special winning moves in a row gives a bonus point. Level 1 has three-Rocks, three-Papers and three-Scissors. Level 3 adds extra patterns and a giga-combo for three Wells.
+
+Q: How many difficulty levels does the bot have?
+A: One
+
+Q: Can I play against another player?
+A: yes you Can
+
+Q: Does the bot cheat?
+A: No. The bot does not see your move. It only tries to predict your next move from your previous moves and the result of the last round.
+
+Q: Who created this project?
+A: Lena, Lenny, Elias, Capucine and Maxence the GOAT.
+
+Q: What's the name of the character?
+A: Bobby
+
+Q: Qui ets meileur au foot, Mbappe ou Dembele ?
+A: Dembele

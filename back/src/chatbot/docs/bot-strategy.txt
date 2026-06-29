@@ -1,0 +1,48 @@
+HOW TO BEAT THE AI BOT - TIPS & TRICKS
+
+The bot is a prediction machine: it watches how you play, guesses your next
+move, and plays whatever beats it. Every trick below exploits one of its habits.
+
+--- TIP 1: BE RANDOM
+The bot only wins when you are predictable. It looks for patterns in your moves.
+If you play truly randomly, its predictions become useless and it cannot get an
+edge. Repeating yourself is how you lose.
+
+--- TIP 2: NEVER REPEAT THE MOVE THAT JUST WON ---
+The bot assumes "win-stay, lose-shift": after you win a round, it expects you to
+play the same move again, and after you lose it expects you to switch. So do the
+opposite of the habit: change your move after a win, and feel free to keep one
+after a loss. This breaks its read on you.
+
+--- TIP 3: WATCH YOUR OWN SEQUENCES ---
+The bot remembers what you usually play right AFTER a given move. If you always
+follow Rock with Paper, it will catch that and counter it. Mix up your follow-ups
+so "what comes after X" stays unpredictable.
+
+--- TIP 4: PUNISH THE WELL WITH PAPER (LEVEL 2+) ---
+From level 2 the Well is unlocked and the bot loves it, because the Well beats
+both Rock and Scissors. But the Well has one weakness: Paper beats the Well.
+When you feel the bot leaning on the Well, drop a Paper to punish it.
+
+--- TIP 5: BLUFF WITH PAPER TO SCARE OFF THE WELL (LEVEL 2+) ---
+The bot avoids the Well when it thinks you are about to play Paper. So if you
+play Paper often, it gets scared and stops using its strongest move. Once it
+stops fearing nothing, you are free to win with Rock or Scissors. Use Paper as
+a threat, not just as an attack.
+
+--- TIP 6: EXPLOIT ITS PANIC WHEN IT IS LOSING ---
+When the bot falls behind on score it plays more seriously and takes bigger
+risks with the Well. Knowing this, keep a Paper ready when you are ahead: a
+losing bot is more likely to gamble on the Well, and Paper punishes it.
+
+--- TIP 7: RELAX WHEN IT IS WINNING ---
+When the bot is far ahead it plays more cautiously and avoids risky moves. It
+becomes more conservative and easier to read, so a sudden change of rhythm from
+you can catch it off guard and start a comeback.
+
+--- LEVEL CHEAT SHEET ---
+Level 0: no Well, first to 5. Easiest. Just avoid repeating yourself.
+Level 1: no Well, first to 10. The bot doubles down on what works - vary more.
+Level 2: Well unlocked, first to 10. Use Paper to punish and to bluff the Well.
+Level 3: Well unlocked, first to 10, hardest. All tricks combined: stay random,
+         keep Paper as your anti-Well weapon, and never settle into a pattern.

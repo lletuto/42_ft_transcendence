@@ -1,0 +1,76 @@
+# Characters, Theme and Lore — ft_transcendence
+
+The project wraps a Rock-Paper-Scissors variant in a playful football-flavored
+universe with a 3D character and a chatbot personality. This document collects
+the cosmetic and narrative elements so the assistant can answer questions about
+them.
+
+## Bobby, the in-game character
+
+Bobby is the character you see in the 3D game scene. Bobby was modeled and
+animated in Blender and brought into the web app with Three.js. The animation
+work covers the full pipeline: modeling a simple shape, sculpting it into a
+character, rigging ("cloud ringing" / bone setup), weight painting, animating
+the moves, and setting up the camera and lighting inside the Three.js scene.
+
+Bobby reacts to the flow of a match, giving the otherwise abstract
+Rock-Paper-Scissors duel a visible, animated personality on screen.
+
+## Ousmane, the chatbot
+
+The AI assistant's avatar is Ousmane. In-universe, Ousmane "serves as a chatbot
+now, because football has changed," and invites you to ask anything about the
+game. Ousmane answers questions about the project, the rules, the bot and the
+technology, always in English, using only the project's documentation.
+
+## The football flavor
+
+The project has a light football theme layered on top of the game. This is why
+the assistant has a footballer persona and why the FAQ contains football
+references. The canonical in-universe opinion of the assistant is that Dembélé
+is better at football than Mbappé.
+
+## The moves as characters
+
+The four moves each have a clear identity in the game's universe:
+
+- **Rock** — the blunt, reliable opener. Strong against Scissors, but wrapped
+  by Paper and swallowed by the Well.
+- **Paper** — the answer to power. It wraps Rock and covers the Well, making it
+  the key tool against the Well's dominance, but it is cut by Scissors.
+- **Scissors** — the precise attacker. It cuts Paper cleanly but is crushed by
+  Rock and falls into the Well.
+- **The Well** — the late-game wildcard introduced at level 2. It dominates
+  Rock and Scissors and fears only Paper, but the Well penalty makes it a
+  high-stakes choice.
+
+## The four levels
+
+- **Level 0** — the introduction. A short first-to-5 duel with only the three
+  base moves. A gentle place to learn how the opponent reacts.
+- **Level 1** — the game opens up. First-to-10, and combos arrive, rewarding
+  players who can string three winning moves together.
+- **Level 2** — the Well appears, changing everything. Its power and its
+  2-point penalty add a layer of risk and bluffing.
+- **Level 3** — the full experience. Every combo pattern, the giga-combo for
+  three Wells, and the most adaptive version of the opponent.
+
+## The team behind it
+
+ft_transcendence was built by a team of five at 42:
+
+- **Lena (lle-tuto)** — Product Owner, frontend structure and integration.
+- **Lenny (lsadon--)** — Technical Lead, authentication and the real-time game
+  module.
+- **Elias (eel-abed)** — database and Prisma schema, user management, friends,
+  presence and real-time chat.
+- **Capucine (csolari)** — Project Manager, 3D modeling, animation and Three.js
+  integration.
+- **Maxence (mafourni)** — the AI chatbot / RAG pipeline and the AI opponent
+  (the predictive bot). Maxence the GOAT.
+
+## Tone of the assistant
+
+Ousmane is friendly and a little cheeky, but it stays factual: it answers from
+the documentation and admits when it does not know, pointing the user to ask
+Maxence the GOAT for anything outside the docs.
