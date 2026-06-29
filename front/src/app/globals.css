@@ -1,0 +1,631 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); */
+
+/*gathers the theme variables and the global styles, we are using Tailwind CSS but also
+ custom CSS because it is very helpful for dealing with such thinsgs as buttons and cards
+ In this file im using css concepts such as :
+ - @keyframes--> defines animations --> float, spin
+ - @media--> applies styles only if a condition is true (screen size, theme(dark/light))
+ - @layer--> defines a layer of styles, useful for overriding styles
+ - @font-face--> defines a custom font, useful for using fonts that are not available in the system, 
+ when its declared in layout.js like we did, font-face is automatically generated
+*/
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs → text-orange, bg-orange, border-orange... */
+  --color-orange: #f0563a;
+  --color-beige: #fad3a8;
+  --color-pink: #ff9db1;
+  --color-dark: #9a4a2c;
+
+  /* Spacing → gap-xs, p-sm, m-md, gap-lg... */
+  --spacing-xs: clamp(0.25rem, 0.35vw, 0.35rem);
+  --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+  --spacing-md: clamp(1rem, 3vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 4vw, 2.5rem);
+  --spacing-xl: clamp(2rem, 5vw, 3rem);
+
+  /* Font sizes → text-xs, text-sm, text-base... */
+  --font-size-xs: clamp(0.65rem, 1.5vw, 0.75rem);
+  --font-size-sm: clamp(0.75rem, 2vw, 0.875rem);
+  --font-size-base: clamp(0.875rem, 2.5vw, 1rem);
+  --font-size-lg: clamp(1rem, 3vw, 1.125rem);
+  --font-size-xl: clamp(1.125rem, 3.5vw, 1.25rem);
+  --font-size-2xl: clamp(1.25rem, 4vw, 1.5rem);
+  --font-size-4xl: clamp(1.75rem, 6vw, 2.25rem);
+
+  /* Border radius → rounded-sm, rounded-md... */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-card: clamp(12px, 2vw, 24px);
+
+  /* Max width → max-w-sm, max-w-md... */
+  --container-sm: min(500px, 90vw);
+  --container-md: min(760px, 90vw);
+}
+
+
+
+:root {
+  /*color palette*/
+  --orange: #f0563a;
+  --beige: #fad3a8;
+  --pink: #ff9db1;
+  --dark: #9a4a2c;
+
+  /*police sizes*/
+  --text-xs: clamp(0.65rem, 1.5vw, 0.75rem);
+  --text-sm: clamp(0.75rem, 2vw, 0.875rem);
+  --text-base: clamp(0.875rem, 2.5vw, 1rem);
+  --text-lg: clamp(1rem, 3vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 3.5vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 4vw, 1.5rem);
+  --text-4xl: clamp(1.75rem, 6vw, 2.25rem);
+
+  /* Spacing */
+  --space-xs: clamp(0.25rem, 0.35vw, 0.35rem);
+  --space-sm: clamp(0.5rem, 2vw, 1rem);
+  --space-md: clamp(1rem, 3vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 4vw, 2.5rem);
+
+  /*Container sizes */
+  --container-sm: min(500px, 90vw);
+  --container-md: min(760px, 90vw);
+
+  /*button sizes*/
+  --btn-sm: var(--text-sm) / var(--space-xs, 0.35rem) var(--space-sm);
+  --btn-md: var(--text-base) / var(--space-sm) var(--space-md);
+  --btn-lg: var(--text-xl) / var(--space-md) var(--space-lg);
+
+  /*card sizes*/
+  --card-radius: clamp(12px, 2vw, 24px);
+  --card-padding: clamp(14px, 3vw, 22px);
+}
+
+body {
+  background-color: #ff9db1;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: var(--font-jersey), sans-serif;
+}
+
+.press-start-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-family: var(--font-press-start), cursive;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.profile-main {
+  display: grid;
+  gap: 18px;
+  grid-column: 1;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile-sidebar {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  position: static;
+  width: 100%;
+}
+
+.profile-friends {
+  grid-column: 1;
+  max-width: 760px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-main {
+    grid-column: auto;
+    max-width: 760px;
+  }
+
+  .profile-sidebar {
+    grid-column: auto;
+    grid-row: auto;
+    position: static;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .profile-friends {
+    grid-column: auto;
+    max-width: 760px;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-float-1 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.animate-float-2 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-float-3 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/* PINK buttons  */
+.btn_pink {
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  background-color: #ff9db1;
+  color: #f0563a;
+  padding: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 2vw, 1.5rem);
+  font-size: var(--btn-size, var(--text-xl));
+  border-radius: 9999px;
+  width: 100%;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  /* text-overflow: ellipsis; */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn_pink:hover {
+  background-color: #fad3a8;
+  color: #f0563a;
+}
+
+/* Orange buttons  */
+
+
+.btn_orange {
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  background-color: #f0563a;
+  color: #fad3a8;
+  padding: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 2vw, 1.5rem);
+  font-size: var(--btn-size, var(--text-xl));
+  border-radius: 9999px;
+  width: 100%;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  /* text-overflow: ellipsis; */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn_orange:hover {
+  background-color: #fad3a8;
+  color: #f0563a;
+}
+
+/*Cards*/
+.form-card {
+
+  width: var(--container-sm);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-lg);
+
+  padding: var(--space-lg);
+
+  background: transparent;
+
+}
+
+
+
+/*Input boxes*/
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-box {
+  width: 100%;
+  background-color: #fff8ee;
+  color: var(--orange);
+
+  border: none;
+  outline: none;
+
+  border-radius: 9999px;
+
+  padding: var(--space-sm) var(--space-md);
+
+  font-size: var(--text-base);
+
+  box-sizing: border-box;
+
+  transition:
+    background-color .2s,
+    transform .2s;
+}
+
+
+.input-box::placeholder {
+  color: var(--dark);
+  opacity: .7;
+}
+
+
+.input-box:focus {
+  transform: scale(1.02);
+}
+
+
+.input-error {
+  position: absolute;
+  left: 0;
+  bottom: -1.2rem;
+
+  color: var(--orange);
+
+  font-size: var(--text-sm);
+
+  white-space: nowrap;
+}
+
+
+.profile-page {
+  min-height: 100vh;
+  padding: var(--space-lg) var(--space-md);
+  box-sizing: border-box;
+}
+
+
+.profile-container {
+  width: 100%;
+  max-width: var(--container-md);
+  margin: 0 auto;
+
+  display: grid;
+  gap: var(--space-lg);
+}
+
+
+/*Profile*/
+.card {
+  background: var(--beige);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow:
+    0 12px 30px rgba(240, 86, 58, .12);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-title {
+  color: var(--orange);
+  font-family: var(--font-press-start), cursive;
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-md);
+}
+
+.profile-info {
+  color: var(--orange);
+  font-size: var(--text-base);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  font-weight: 700;
+}
+
+.profile-name {
+  color: var(--orange);
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.profile-id {
+  color: var(--dark);
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.label {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.profile-button {
+  border: none;
+  border-radius: 999px;
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.profile-button.primary {
+  background: var(--orange);
+  color: var(--beige);
+}
+
+
+.profile-button.secondary {
+  padding: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 2vw, 1.5rem);
+  border-radius: var(--card-radius);
+  background: var(--beige);
+  color: var(--orange);
+  width: auto;
+  max-width: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--card-radius);
+  background: var(--pink);
+  color: var(--orange);
+  flex-wrap: wrap;
+}
+
+
+.user-row img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-card {
+  font-size: clamp(0.75rem, 3vw, 1rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: clamp(6px, 1.5vw, 10px);
+  padding: clamp(8px, 2vw, 12px);
+  color: var(--orange);
+  background: #fff8ee;
+  border-radius: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.profile-message {
+  margin: 0;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.875rem, 2.5vw, 1.25rem);
+  border-radius: var(--space-sm);
+  background: rgba(44, 26, 17, 0.08);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  font-size: var(--text-sm);
+  color: var(--dark);
+  width: 100%;
+  max-width: var(--container-sm);
+  box-sizing: border-box;
+}
+
+
+@media(max-width:600px) {
+
+  .profile-page {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .profile-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-button {
+    width: 100%;
+  }
+
+}
+
+
+/*messages */
+
+
+.messages-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-md);
+  align-items: stretch;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .messages-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.friends-card {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  min-height: 60vh;
+}
+
+.friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+  overflow-y: auto;
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--card-radius);
+  background: var(--pink);
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* .friend-item:hover {
+  transform: scale(1.02);
+} */
+
+.friend-item.active {
+  background: var(--pink);
+}
+
+.friend-item img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.online {
+  background: #22c55e;
+}
+
+.status-dot.offline {
+  background: #9ca3af;
+}
+
+.friend-name {
+  font-weight: 700;
+  color: var(--orange);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+  background: linear-gradient(135deg,
+      var(--orange) 0%,
+      var(--pink) 100%);
+}
+
+.chat-header {
+  padding: var(--space-sm);
+  border-bottom: 1px solid rgba(240, 86, 58, 0.2);
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.bubble {
+  max-width: 70%;
+  padding: var(--space-sm);
+  border-radius: var(--card-radius);
+  word-break: break-word;
+}
+
+.bubble.mine {
+  align-self: flex-end;
+  background: var(--orange);
+  color: var(--beige);
+}
+
+.bubble.theirs {
+  align-self: flex-start;
+  background: var(--pink);
+  color: var(--orange);
+}
+
+.chat-input {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-top: 1px solid rgba(240, 86, 58, 0.2);
+}
+
+@media (max-width: 600px) {
+  .chat-input {
+    flex-direction: column;
+  }
+
+  .chat-input button {
+    width: 100%;
+  }
+}
+
+.chat-empty {
+  margin: auto;
+  color: var(--dark);
+  font-weight: 700;
+  text-align: center;
+}

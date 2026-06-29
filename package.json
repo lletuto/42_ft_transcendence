@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@langchain/textsplitters": "^1.0.1",
+    "@nestjs/platform-socket.io": "^11.1.26",
+    "@nestjs/websockets": "^11.1.26",
+    "pg": "^8.21.0"
+  }
+}
